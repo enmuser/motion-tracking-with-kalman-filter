@@ -10,4 +10,7 @@ We use it to count the number of cars passing through a toll booth.
 
 We use it to count the number of people walking in and out of a store.
 
-And we use it for motion detection.
+And we use it for motion detection. We use the first image of video and we maintain it static
+
+with black color, and for the erea where the emotion is detected we can see white color
+
