@@ -23,3 +23,6 @@ with black color, and for the erea where the emotion is detected we can see whit
 ## For Tracking we use Kalman Filter
 
 With Kalman Filter we predict and update the meared position.
+
+![Measured position](https://github.com/Stevencibambo/motion-tracking-with-kalman-filter/blob/master/images/kalmanfilter1.png)
+![Output Kalman](https://github.com/Stevencibambo/motion-tracking-with-kalman-filter/blob/master/images/outputkalmanfilter.png)
