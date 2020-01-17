@@ -26,3 +26,17 @@ With Kalman Filter we predict and update the meared position.
 
 ![Measured position](https://github.com/Stevencibambo/motion-tracking-with-kalman-filter/blob/master/images/kalmanfilter1.png)
 ![Output Kalman](https://github.com/Stevencibambo/motion-tracking-with-kalman-filter/blob/master/images/outputkalmanfilter.png)
+
+## Runing
+With Python 3
+python motion_detection.py --video video/path_video
+
+or 
+to use webcom or camera
+
+python motion_detection.py
+
+The measured positions are saved in motionTrajector.npy
+To predict and update
+run
+python measured.py
