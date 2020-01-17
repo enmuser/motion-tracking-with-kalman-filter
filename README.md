@@ -14,5 +14,5 @@ And we use it for motion detection. We use the first image of video and we maint
 
 with black color, and for the erea where the emotion is detected we can see white color
 
-![Background](https://github.com/Stevencibambo/motion-tracking-with-kalman-filter/images/track2.png)
+![Background](https://github.com/Stevencibambo/motion-tracking-with-kalman-filter/blob/master/images/trac11.png)
 
