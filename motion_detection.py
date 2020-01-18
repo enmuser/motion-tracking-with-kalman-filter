@@ -16,35 +16,9 @@ import cv2
 # consturct the argement parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="Path to the video file")
-ap.add_argument("-b", "--buffer", type=int, default=0, help="max buffer size")
-ap.add_argument("-a", "--min-area", type=int, default=100, help="minimum area size")
+ap.add_argument("-a", "--min-area", type=int, default=500, help="minimum area size")
 args = vars(ap.parse_args())
 #####################################################################
-
-# return centre of a set of points representing a rectangle
-
-def center(points):
-    x = np.float32((points[0][0] + points[1][0] + points[2][0] + points[3][0]) / 4.0)
-    y = np.float32((points[0][1] + points[1][1] + points[2][1] + points[3][1]) / 4.0)
-    return np.array([np.float32(x), np.float32(y)], np.float32)
-
-#####################################################################
-
-# init kalman filter object
-
-kalman = cv2.KalmanFilter(4,2)
-kalman.measurementMatrix = np.array([[1,0,0,0],
-                                     [0,1,0,0]],np.float32)
-
-kalman.transitionMatrix = np.array([[1,0,1,0],
-                                    [0,1,0,1],
-                                    [0,0,1,0],
-                                    [0,0,0,1]],np.float32)
-
-kalman.processNoiseCov = np.array([[1,0,0,0],
-                                   [0,1,0,0],
-                                   [0,0,1,0],
-                                   [0,0,0,1]],np.float32) * 0.03
 
 measurement = np.array((2,1), np.float32)
 prediction = np.zeros((2,1), np.float32)
@@ -138,21 +112,7 @@ while True:
         pts = np.int0(pts)
         measuredTrack[count-1,:] = pts[0]
         plt.plot(pts[0,0],pts[0,1], 'xg')
-        
-        # use to correct the Kalman filter
-        #kalman.correct(center(pts))
-        
-        # get new Kalman filter prediction
-        #prediction = kalman.predict()
-        
-        # draw prediction on image in BLUE
-        #cv2.rectangle(frame, (prediction[0]-(0.5*w),prediction[1]-(0.5*h)), (prediction[0]+(0.5*w),prediction[1]+(0.5*h)), (255,0,0),2)
-
-        #plt.plot(prediction[0],prediction[1], 'xb')
-        # get new Kalman filter update
-        
-       # update = kalman.update()
-        
+            
     # draw the text and timestamp on the frame
     cv2.putText(frame, "Object found: {}".format(len(cnts)), (10, 20), 
                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,255),2)
