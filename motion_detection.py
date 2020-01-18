@@ -17,9 +17,8 @@ import cv2
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="Path to the video file")
 ap.add_argument("-b", "--buffer", type=int, default=0, help="max buffer size")
-ap.add_argument("-a", "--min-area", type=int, default=500, help="minimum area size")
+ap.add_argument("-a", "--min-area", type=int, default=100, help="minimum area size")
 args = vars(ap.parse_args())
-
 #####################################################################
 
 # return centre of a set of points representing a rectangle
@@ -162,13 +161,11 @@ while True:
     # show the frame and record if the user presses a key
     cv2.imshow("Main Frame", frame)
     cv2.waitKey(200)
-    cv2.imshow("Main Frame", frame)
     cv2.moveWindow("Main Frame", 0,0)
-    cv2.imshow("Seuil", thresh)
-    cv2.moveWindow("Seuil", 600,0)
-    
-   # cv2.imshow("Frame Delta", frameDelta)
-   # cv2.moveWindow("Frame Delta",700,0)
+    cv2.imshow("Seuillage", frameDelta)
+    cv2.moveWindow("Seuillage", 600, 0)
+    cv2.imshow("Erosion et Dilatation", thresh)
+    cv2.moveWindow("Erosion et Dilatation", 700,350) 
     key = cv2.waitKey(1) & 0xFF
     # if the `q` key is pressed, break from the lop
     if key == ord("q"):
